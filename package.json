@@ -12,10 +12,54 @@
   "activationEvents": [],
   "main": "./dist/extension.js",
   "contributes": {
+    "configuration":[
+      {
+        "title": "Code Sticky Note",
+        "properties": {
+          "code-sticky-note.saveFolderName": {
+            "type": "string",
+            "default": "code-sticky-note",
+            "description": "The folder name to save sticky notes."
+          },
+          "code-sticky-note.saveFileName": {
+            "type": "string",
+            "default": "note",
+            "description": "The file name to save sticky notes."
+          }
+        }
+      }
+    ],
     "commands": [
       {
-        "command": "code-sticky-note.helloWorld",
-        "title": "Hello World"
+        "command": "code-sticky-note.refresh",
+        "title": "Refresh"
+      },
+      {
+        "command": "code-sticky-note.init",
+        "title": "Initialize"
+      }
+    ],
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "code-sticky-note",
+          "title": "code-sticky-note",
+          "icon": "media/sample.svg"
+        }
+      ]
+    },
+    "views": {
+      "code-sticky-note": [
+        {
+          "id": "code-sticky-note-view",
+          "name": "code-sticky-note"
+        }
+      ]
+    },
+    "viewsWelcome": [
+      {
+        "view": "code-sticky-note-view",
+        "contents": "Please init code sticky note json file.\n[Initialize](command:code-sticky-note.init)\n"
       }
     ]
   },
