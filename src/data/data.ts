@@ -1,23 +1,33 @@
 export class CodeStickyNoteJsonData {
     version: string;
+    pages: CodeStickyNoteJsonDataPage[];
+
+    constructor(version: string, pages: CodeStickyNoteJsonDataPage[]) {
+        this.version = version;
+        this.pages = pages;
+    }
+}
+
+export class CodeStickyNoteJsonDataPage {
+    id: string;
+    file_uri: string;
     notes: CodeStickyNoteJsonDataNote[];
 
-    constructor(version: string, notes: CodeStickyNoteJsonDataNote[]) {
-        this.version = version;
+    constructor(id: string, file_uri: string, notes: CodeStickyNoteJsonDataNote[]) {
+        this.id = id;
+        this.file_uri = file_uri;
         this.notes = notes;
     }
 }
 
 export class CodeStickyNoteJsonDataNote {
-    id: number;
-    title: string;
+    id: string;
     body: string;
-    tags: string[];
+    row: number;
 
-    constructor(id: number, title: string, body: string, tags: string[]) {
+    constructor(id: string, body: string, row: number) {
         this.id = id;
-        this.title = title;
         this.body = body;
-        this.tags = tags;
+        this.row = row;
     }
 }

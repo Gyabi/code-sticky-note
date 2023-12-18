@@ -31,10 +31,6 @@
     ],
     "commands": [
       {
-        "command": "code-sticky-note.refresh",
-        "title": "Refresh"
-      },
-      {
         "command": "code-sticky-note.init",
         "title": "Initialize"
       }

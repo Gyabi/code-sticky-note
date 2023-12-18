@@ -23,7 +23,7 @@ export function registerCommands(context: vscode.ExtensionContext) {
  */
 export function registerView(context: vscode.ExtensionContext) {
     const disposable = vscode.window.registerTreeDataProvider('code-sticky-note-view', view);
-    context.subscriptions.push(disposable);
+    context.subscriptions.push(disposable);  
 }
 
 /**
