@@ -47,8 +47,12 @@
     "views": {
       "code-sticky-note": [
         {
-          "id": "code-sticky-note-view",
+          "id": "code-sticky-note-view-full",
           "name": "code-sticky-note"
+        },
+        {
+          "id": "code-sticky-note-view-current",
+          "name": "code-sticky-note (Only Current)"
         }
       ]
     },

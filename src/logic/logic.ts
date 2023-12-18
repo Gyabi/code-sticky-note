@@ -1,10 +1,11 @@
 import * as vscode from 'vscode';
 import { isExistsFile, createFile, readFile } from "./io";
-import { MyTreeDataProvider } from '../view/view';
+import { CSNCurrentFileTreeDataProvider, CSNFullTreeDataProvider } from '../view/view';
 import { logging } from '../log/logging';
 import { DataController } from '../data/data_controller';
 const dataController = new DataController();
-const view = new MyTreeDataProvider();
+const view_full = new CSNFullTreeDataProvider();
+const view_current = new CSNCurrentFileTreeDataProvider();
 
 export function registerCommands(context: vscode.ExtensionContext) {
     let disposables: vscode.Disposable[] = [];
@@ -23,8 +24,12 @@ export function registerCommands(context: vscode.ExtensionContext) {
  * @param context コンテキスト
  */
 export function registerView(context: vscode.ExtensionContext) {
-    const disposable = vscode.window.registerTreeDataProvider('code-sticky-note-view', view);
-    context.subscriptions.push(disposable);  
+    let disposables: vscode.Disposable[] = [];
+    
+    disposables.push(vscode.window.registerTreeDataProvider('code-sticky-note-view-full', view_full));
+    disposables.push(vscode.window.registerTreeDataProvider('code-sticky-note-view-current', view_current));
+    
+    context.subscriptions.push(...disposables);  
 }
 
 /**
@@ -35,7 +40,7 @@ async function init() {
     // ファイルが存在しない場合は作成
     if (!isExistsFile()) {
         createFile();
-        view.refresh();
+        view_full.refresh();
         logging('Initialized.');
     }
     else {
