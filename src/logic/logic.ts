@@ -11,6 +11,8 @@ export function registerCommands(context: vscode.ExtensionContext) {
     let disposables: vscode.Disposable[] = [];
 	// 初期化コマンド
     disposables.push(vscode.commands.registerCommand('code-sticky-note.init', init));
+    // ノートを開くコマンド
+    disposables.push(vscode.commands.registerCommand('code-sticky-note.open', open));
 
 	// 表示コマンド
 	// 保存コマンド
@@ -46,6 +48,10 @@ async function init() {
     else {
         logging('Already initialized.');
     }
+}
+
+async function open() {
+    logging('Open!!');
 }
 
 

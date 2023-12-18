@@ -33,6 +33,18 @@
       {
         "command": "code-sticky-note.init",
         "title": "Initialize"
+      },
+      {
+        "command": "code-sticky-note.open",
+        "title": "Open note"
+      }
+    ],
+    "keybindings": [
+      {
+        "command": "code-sticky-note.open",
+        "key": "ctrl+1",
+        "mac": "cmd+1",
+        "when": "editorTextFocus"
       }
     ],
     "viewsContainers": {
@@ -61,7 +73,16 @@
         "view": "code-sticky-note-view",
         "contents": "Please init code sticky note json file.\n[Initialize](command:code-sticky-note.init)\n"
       }
-    ]
+    ],
+    "menus": {
+      "editor/context": [
+        {
+          "when": "editorTextFocus",
+          "command": "code-sticky-note.open",
+          "group": "code-sticky-note@1"
+        }
+      ]
+    }
   },
   "scripts": {
     "vscode:prepublish": "npm run package",
