@@ -2,7 +2,8 @@ import * as vscode from 'vscode';
 import { isExistsFile, createFile, readFile } from "./io";
 import { MyTreeDataProvider } from '../view/view';
 import { logging } from '../log/logging';
-
+import { DataController } from '../data/data_controller';
+const dataController = new DataController();
 const view = new MyTreeDataProvider();
 
 export function registerCommands(context: vscode.ExtensionContext) {
@@ -40,4 +41,13 @@ async function init() {
     else {
         logging('Already initialized.');
     }
+}
+
+
+/**
+ * データ管理インスタンスを返却
+ * @returns dataController
+ */
+export function getDataController(): DataController {
+    return dataController;
 }
