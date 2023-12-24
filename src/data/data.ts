@@ -22,12 +22,14 @@ export class CodeStickyNoteJsonDataPage {
 
 export class CodeStickyNoteJsonDataNote {
     id: string;
-    body: string;
     row: number;
+    git_hash: string;
+    body: string;
 
-    constructor(id: string, body: string, row: number) {
+    constructor(id: string, body: string, row: number, git_hash: string) {
         this.id = id;
-        this.body = body;
         this.row = row;
+        this.git_hash = git_hash;
+        this.body = body;
     }
 }
